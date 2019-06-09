@@ -1,0 +1,15 @@
+<devices>
+  <device id="3" critical="false">
+    <name>string</name>
+    <origin>string</origin>
+    <price>201</price>
+    <type peripheral="false" cooler="false">
+      <deviceType>string</deviceType>
+      <ports>
+        <port>ethernet</port>
+      </ports>
+      <energy>201</energy>
+      <group>multimedia</group>
+    </type>
+  </device>
+</devices>
