@@ -1,5 +1,5 @@
 <devices>
-    <device id="1" critical="false">
+    <device id="1" critical="fa__lse">
         <name>Mouse a4tech</name>
         <origin>us</origin>
         <price>99</price>
@@ -19,9 +19,9 @@
         <type peripheral="true" cooler="true">
             <deviceType>keyboard</deviceType>
             <ports>
-                <port>com</port>
+                <port>what happens</port>
             </ports>
-            <energy>25</energy>
+            <energy>noo</energy>
             <group>io_device</group>
         </type>
     </device>

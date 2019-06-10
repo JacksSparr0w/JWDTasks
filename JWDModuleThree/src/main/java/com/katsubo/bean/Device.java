@@ -1,5 +1,7 @@
 package com.katsubo.bean;
 
+import java.util.Objects;
+
 public class Device {
     private int id;
     private String name;
@@ -54,5 +56,35 @@ public class Device {
 
     public void setCritical(boolean critical) {
         this.critical = critical;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Device device = (Device) o;
+        return id == device.id &&
+                price == device.price &&
+                critical == device.critical &&
+                Objects.equals(name, device.name) &&
+                Objects.equals(origin, device.origin) &&
+                Objects.equals(type, device.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, origin, price, type, critical);
+    }
+
+    @Override
+    public String toString() {
+        return "Device {" +
+                id +
+                " " + name +
+                " " + origin +
+                " " + price +
+                " " + type +
+                " " + critical +
+                '}';
     }
 }

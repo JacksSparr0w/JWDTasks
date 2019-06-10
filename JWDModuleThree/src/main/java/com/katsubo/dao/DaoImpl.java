@@ -5,13 +5,18 @@ import com.katsubo.bean.Device;
 import java.util.List;
 
 public class DaoImpl implements Dao<Device> {
+    private static Dao instance = new DaoImpl();
     List<Device> devices;
 
-    public void set() {
+    public static Dao getInstance(){
+        return instance;
+    }
 
+    public void set(List<Device> devices) {
+        this.devices = devices;
     }
 
     public List<Device> get() {
-        return null;
+        return devices;
     }
 }

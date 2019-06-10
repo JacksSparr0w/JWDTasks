@@ -1,0 +1,28 @@
+<devices>
+  <device id="1" critical="false">
+    <name>Mouse a4tech</name>
+    <origin>us</origin>
+    <price>99</price>
+    <type peripheral="false" cooler="false">
+      <deviceType>mouse</deviceType>
+      <ports>
+        <port>usb</port>
+      </ports>
+      <energy>5</energy>
+      <group>io_device</group>
+    </type>
+  </device>
+  <device id="2" critical="true">
+    <name>keyboard razer</name>
+    <origin>us</origin>
+    <price>199</price>
+    <type peripheral="true" cooler="true">
+      <deviceType>keyboard</deviceType>
+      <ports>
+        <port>com</port>
+      </ports>
+      <energy>25</energy>
+      <group>io_device</group>
+    </type>
+  </device>
+</devices>

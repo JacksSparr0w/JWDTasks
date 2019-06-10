@@ -2,6 +2,7 @@ package com.katsubo.bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Type {
     private String name;
@@ -58,7 +59,35 @@ public class Type {
 
     public void setPorts(List<Port> ports) {
         this.ports = ports;
-        //this.ports = new ArrayList<Port>();
-        //System.arraycopy(ports, 0, this.ports, ports.size()-1, ports.size());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Type type = (Type) o;
+        return peripheral == type.peripheral &&
+                energyUse == type.energyUse &&
+                cooler == type.cooler &&
+                Objects.equals(name, type.name) &&
+                group == type.group &&
+                Objects.equals(ports, type.ports);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, peripheral, energyUse, cooler, group, ports);
+    }
+
+    @Override
+    public String toString() {
+        return "Type {" +
+                name +
+                ' ' + peripheral +
+                " " + energyUse +
+                " " + cooler +
+                " " + group +
+                " " + ports +
+                '}';
     }
 }

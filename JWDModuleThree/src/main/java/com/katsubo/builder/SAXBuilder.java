@@ -8,19 +8,16 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SAXBuilder extends Builder {
     @Override
-    public void buildDevices() throws IOException, SAXException, ParserConfigurationException {
+    public void buildDevices(String fileName) {
         SAXParserFactory factory;
         factory = SAXParserFactory.newInstance();
-        SAXParser saxParser = factory.newSAXParser();
 
         DefaultHandler handler = new DefaultHandler() {
             Device device;
@@ -28,24 +25,22 @@ public class SAXBuilder extends Builder {
             List<Port> ports;
 
             String lastElement;
+
             @Override
             public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
-                switch (qName){
+                switch (qName) {
                     case "device":
                         device = new Device();
                         device.setId(Integer.valueOf(atts.getValue("id")));
-                        device.setCritical(Boolean.getBoolean(atts.getValue("critical")));
-
+                        device.setCritical(Boolean.valueOf(atts.getValue("critical")));
                         break;
                     case "type":
                         type = new Type();
-                        type.setPeripheral(Boolean.getBoolean(atts.getValue("peripheral")));
-                        type.setCooler(Boolean.getBoolean(atts.getValue("cooler")));
-
+                        type.setPeripheral(Boolean.valueOf(atts.getValue("peripheral")));
+                        type.setCooler(Boolean.valueOf(atts.getValue("cooler")));
                         break;
                     case "ports":
                         ports = new ArrayList<>();
-
                 }
                 lastElement = qName;
             }
@@ -53,7 +48,7 @@ public class SAXBuilder extends Builder {
             @Override
             public void characters(char[] ch, int start, int length) throws SAXException {
                 String data = new String(ch, start, length);
-                switch (lastElement){
+                switch (lastElement) {
                     case "name":
                         device.setName(data);
                         break;
@@ -64,8 +59,8 @@ public class SAXBuilder extends Builder {
                         device.setPrice(Integer.valueOf(data));
                         break;
                     case "deviceType":
-                         type.setName(data);
-                         break;
+                        type.setName(data);
+                        break;
                     case "port":
                         ports.add(Port.of(data).get());
                         break;
@@ -74,14 +69,13 @@ public class SAXBuilder extends Builder {
                         break;
                     case "group":
                         type.setGroup(Group.of(data).get());
-                        //break;
                 }
                 lastElement = "";
             }
 
             @Override
             public void endElement(String uri, String localName, String qName) throws SAXException {
-                switch (qName){
+                switch (qName) {
                     case "type":
                         device.setType(type);
                         break;
@@ -94,6 +88,12 @@ public class SAXBuilder extends Builder {
             }
         };
 
-        saxParser.parse("src/main/resources/data.xml", handler);
+        try {
+            SAXParser saxParser = factory.newSAXParser();
+            saxParser.parse(fileName, handler);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //todo log
+        }
     }
 }

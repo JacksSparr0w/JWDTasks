@@ -1,32 +1,33 @@
 package com.katsubo.builder;
 
-import com.katsubo.bean.*;
+import com.katsubo.bean.Device;
+import com.katsubo.bean.Group;
+import com.katsubo.bean.Port;
+import com.katsubo.bean.Type;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DOMBuilder extends Builder {
     private Document document;
 
-    public void buildDevices() throws IOException, SAXException, ParserConfigurationException {
+    public void buildDevices(String fileName) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-
-        document = builder.parse(new File("src/main/resources/data.xml"));
-
+        try {
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            document = builder.parse(new File(fileName));
+        } catch (Exception e) {
+            e.printStackTrace();
+            //todo
+        }
         document.getDocumentElement().normalize();
-
-        //Element root = document.getDocumentElement();
 
         NodeList nodes = document.getElementsByTagName("device");
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -42,13 +43,13 @@ public class DOMBuilder extends Builder {
     private Device buildDevice(Element element) {
         Device device = new Device();
         device.setId(Integer.valueOf(element.getAttribute("id")));
-        device.setCritical(Boolean.getBoolean(element.getAttribute("critical")));
+        device.setCritical(Boolean.valueOf(element.getAttribute("critical")));
 
         device.setName(element.getElementsByTagName("name").item(0).getTextContent());
         device.setOrigin(element.getElementsByTagName("origin").item(0).getTextContent());
         device.setPrice(Integer.valueOf(element.getElementsByTagName("price").item(0).getTextContent()));
 
-        Type type = buildType(document.getElementsByTagName("type"));
+        Type type = buildType(element.getElementsByTagName("type"));
         device.setType(type);
 
         return device;
@@ -67,7 +68,7 @@ public class DOMBuilder extends Builder {
                 type.setGroup(Group.of(element.getElementsByTagName("group").item(0).getTextContent()).get());
                 type.setName(element.getElementsByTagName("deviceType").item(0).getTextContent());
 
-                List<Port> ports = buildPorts(document.getElementsByTagName("ports"));
+                List<Port> ports = buildPorts(element.getElementsByTagName("ports"));
                 type.setPorts(ports);
 
 
@@ -79,9 +80,9 @@ public class DOMBuilder extends Builder {
     private List<Port> buildPorts(NodeList nodes) {
         List<Port> ports = new ArrayList<>();
         for (int i = 0; i < nodes.getLength(); i++) {
-            Node node3 = nodes.item(i);
+            Node node = nodes.item(i);
             if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node3;
+                Element element = (Element) node;
                 Port port = Port.of(element.getElementsByTagName("port").item(i).getTextContent()).get();
                 ports.add(port);
             }

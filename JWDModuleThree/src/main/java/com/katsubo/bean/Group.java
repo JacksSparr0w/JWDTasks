@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 public enum Group {
     MULTIMEDIA("multimedia"),
-    IO_DEVICES("io_devices"),
+    IO_DEVICE("io_device"),
     POWER_SUPPLY("power_supply"),
     MEMORY("memory");
 
