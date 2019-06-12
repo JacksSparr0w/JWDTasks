@@ -5,11 +5,19 @@ import com.katsubo.builder.Builder;
 import com.katsubo.builder.BuilderFactory;
 import com.katsubo.dao.Dao;
 import com.katsubo.dao.DaoImpl;
+import com.katsubo.validator.Validation;
+import com.katsubo.validator.ValidationImpl;
 
 import java.util.List;
 
 public class ServiceImpl implements Service<Device> {
     Dao dao = DaoImpl.getInstance();
+
+    @Override
+    public boolean checkFile(String fileName, String schemaName) {
+        Validation validation = new ValidationImpl();
+        return validation.isValid(fileName, schemaName);
+    }
 
     @Override
     public void load(String fileName, String builderName) {

@@ -4,7 +4,7 @@
     <xs:element name="devices">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="device" minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="device" minOccurs="17" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:all>
                             <xs:element name="name" type="xs:string"/>
@@ -18,7 +18,7 @@
                                         <xs:element name="ports">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="port" minOccurs="1">
+                                                    <xs:element name="port" minOccurs="1" maxOccurs="unbounded">
                                                         <xs:simpleType>
                                                             <xs:restriction base="xs:string">
                                                                 <xs:enumeration value="com"/>

@@ -68,7 +68,7 @@ public class DOMBuilder extends Builder {
                 type.setGroup(Group.of(element.getElementsByTagName("group").item(0).getTextContent()).get());
                 type.setName(element.getElementsByTagName("deviceType").item(0).getTextContent());
 
-                List<Port> ports = buildPorts(element.getElementsByTagName("ports"));
+                List<Port> ports = buildPorts(element.getElementsByTagName("port"));
                 type.setPorts(ports);
 
 
@@ -78,12 +78,13 @@ public class DOMBuilder extends Builder {
     }
 
     private List<Port> buildPorts(NodeList nodes) {
+
         List<Port> ports = new ArrayList<>();
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
             if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
-                Port port = Port.of(element.getElementsByTagName("port").item(i).getTextContent()).get();
+                Port port = Port.of(nodes.item(i).getTextContent()).get();
                 ports.add(port);
             }
         }

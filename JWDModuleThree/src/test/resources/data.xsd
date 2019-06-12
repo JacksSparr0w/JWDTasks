@@ -18,7 +18,7 @@
                                         <xs:element name="ports">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="port" minOccurs="1">
+                                                    <xs:element name="port" minOccurs="1" maxOccurs="unbounded">
                                                         <xs:simpleType>
                                                             <xs:restriction base="xs:string">
                                                                 <xs:enumeration value="com"/>
