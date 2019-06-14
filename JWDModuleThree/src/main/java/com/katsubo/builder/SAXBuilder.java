@@ -4,6 +4,9 @@ import com.katsubo.bean.Device;
 import com.katsubo.bean.Group;
 import com.katsubo.bean.Port;
 import com.katsubo.bean.Type;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -14,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SAXBuilder extends Builder {
+    private final static Logger log = LogManager.getLogger(SAXBuilder.class);
+
     @Override
     public void buildDevices(String fileName) {
         SAXParserFactory factory;
@@ -30,16 +35,20 @@ public class SAXBuilder extends Builder {
             public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
                 switch (qName) {
                     case "device":
+                        log.log(Level.INFO, "create new device");
+
                         device = new Device();
                         device.setId(Integer.valueOf(atts.getValue("id")));
                         device.setCritical(Boolean.valueOf(atts.getValue("critical")));
                         break;
                     case "type":
+                        log.log(Level.INFO, "create new type of device");
                         type = new Type();
                         type.setPeripheral(Boolean.valueOf(atts.getValue("peripheral")));
                         type.setCooler(Boolean.valueOf(atts.getValue("cooler")));
                         break;
                     case "ports":
+                        log.log(Level.INFO, "create new ports of device");
                         ports = new ArrayList<>();
                 }
                 lastElement = qName;
@@ -89,11 +98,12 @@ public class SAXBuilder extends Builder {
         };
 
         try {
+            log.log(Level.INFO, "start parse");
             SAXParser saxParser = factory.newSAXParser();
             saxParser.parse(fileName, handler);
         } catch (Exception e) {
+            log.log(Level.ERROR, e.getMessage());
             e.printStackTrace();
-            //todo log
         }
     }
 }

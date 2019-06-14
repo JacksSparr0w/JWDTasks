@@ -4,6 +4,9 @@ import com.katsubo.bean.Device;
 import com.katsubo.bean.Group;
 import com.katsubo.bean.Port;
 import com.katsubo.bean.Type;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,16 +19,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DOMBuilder extends Builder {
+    private final static Logger log = LogManager.getLogger(DOMBuilder.class);
+
     private Document document;
 
     public void buildDevices(String fileName) {
+        log.log(Level.INFO, "start parse");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
             document = builder.parse(new File(fileName));
         } catch (Exception e) {
-            e.printStackTrace();
-            //todo
+            log.log(Level.ERROR, e.getMessage());
         }
         document.getDocumentElement().normalize();
 
@@ -42,6 +47,7 @@ public class DOMBuilder extends Builder {
 
     private Device buildDevice(Element element) {
         Device device = new Device();
+        log.log(Level.INFO, "create new device");
         device.setId(Integer.valueOf(element.getAttribute("id")));
         device.setCritical(Boolean.valueOf(element.getAttribute("critical")));
 
@@ -57,6 +63,7 @@ public class DOMBuilder extends Builder {
 
     private Type buildType(NodeList nodes) {
         Type type = new Type();
+        log.log(Level.INFO, "create new type of device");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -80,6 +87,8 @@ public class DOMBuilder extends Builder {
     private List<Port> buildPorts(NodeList nodes) {
 
         List<Port> ports = new ArrayList<>();
+        log.log(Level.INFO, "create new ports of devies");
+
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
             if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {

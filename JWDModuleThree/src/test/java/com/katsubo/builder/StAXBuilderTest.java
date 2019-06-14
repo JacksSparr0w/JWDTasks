@@ -9,7 +9,7 @@ public class StAXBuilderTest {
 
     @Before
     public void prepare() {
-        builder = new SAXBuilder();
+        builder = new StAXBuilder();
         try {
             builder.buildDevices("src/test/resources/data.xml");
         } catch (Exception e) {

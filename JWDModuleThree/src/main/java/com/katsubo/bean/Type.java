@@ -56,7 +56,7 @@ public class Type {
         return ports;
     }
 
-    public void setPorts(List<Port> ports) {
+    public void setPorts(List<Port> ports){
         this.ports = ports;
     }
 
