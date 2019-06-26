@@ -1,7 +1,5 @@
 package com.katsubo.task4.entity;
 
-import java.util.Arrays;
-
 public class Matrix {
     Element[][] elements;
 
@@ -9,7 +7,7 @@ public class Matrix {
         this.elements = elements;
     }
 
-    public void setElement(int row, int col, int value){
+    public void setElement(int row, int col, int value) {
         elements[row][col].setValue(value);
     }
 
@@ -25,11 +23,11 @@ public class Matrix {
         return rezult.toString();
     }
 
-    public int getSize(){
+    public int getSize() {
         return elements.length;
     }
 
-    public int getElementValue(int row, int col){
+    public int getElementValue(int row, int col) {
         return elements[row][col].getValue();
     }
 }
