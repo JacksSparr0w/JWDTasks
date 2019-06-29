@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="data.xsd">
+    <device critical="true" id="1">
+        <name>genius q250</name>
+        <origin>ru</origin>
+        <price>879</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>keyboard</deviceType>
+            <ports>
+                <port>jack</port>
+                <port>usb</port>
+                <port>hdmi</port>
+            </ports>
+            <energy>780</energy>
+            <group>memory</group>
+        </type>
+    </device>
+    <device critical="false" id="2">
+        <name>xiaomi mi7</name>
+        <origin>us</origin>
+        <price>755</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>microphone</deviceType>
+            <ports>
+                <port>jack</port>
+                <port>pci</port>
+            </ports>
+            <energy>200</energy>
+            <group>io_device</group>
+        </type>
+    </device>
+    <device critical="false" id="3">
+        <name>samsing pl100</name>
+        <origin>by</origin>
+        <price>609</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>keyboard</deviceType>
+            <ports>
+                <port>pci</port>
+                <port>usb</port>
+            </ports>
+            <energy>430</energy>
+            <group>io_device</group>
+        </type>
+    </device>
+    <device critical="false" id="4">
+        <name>samsing pl100</name>
+        <origin>de</origin>
+        <price>650</price>
+        <type cooler="true" peripheral="true">
+            <deviceType>mouse</deviceType>
+            <ports>
+                <port>usb</port>
+                <port>jack</port>
+            </ports>
+            <energy>700</energy>
+            <group>multimedia</group>
+        </type>
+    </device>
+    <device critical="false" id="5">
+        <name>a4tech a100</name>
+        <origin>us</origin>
+        <price>165</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>clock</deviceType>
+            <ports>
+                <port>com</port>
+                <port>hdmi</port>
+                <port>usb</port>
+            </ports>
+            <energy>370</energy>
+            <group>power_supply</group>
+        </type>
+    </device>
+    <device critical="true" id="6">
+        <name>a4tech a100</name>
+        <origin>us</origin>
+        <price>188</price>
+        <type cooler="false" peripheral="false">
+            <deviceType>keyboard</deviceType>
+            <ports>
+                <port>jack</port>
+            </ports>
+            <energy>30</energy>
+            <group>power_supply</group>
+        </type>
+    </device>
+    <device critical="false" id="7">
+        <name>bloody q7</name>
+        <origin>us</origin>
+        <price>928</price>
+        <type cooler="false" peripheral="true">
+            <deviceType>microphone</deviceType>
+            <ports>
+                <port>usb</port>
+            </ports>
+            <energy>710</energy>
+            <group>io_device</group>
+        </type>
+    </device>
+    <device critical="false" id="8">
+        <name>a4tech a100</name>
+        <origin>by</origin>
+        <price>219</price>
+        <type cooler="false" peripheral="true">
+            <deviceType>mouse</deviceType>
+            <ports>
+                <port>com</port>
+            </ports>
+            <energy>430</energy>
+            <group>multimedia</group>
+        </type>
+    </device>
+    <device critical="false" id="9">
+        <name>amazfit bip</name>
+        <origin>fr</origin>
+        <price>548</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>keyboard</deviceType>
+            <ports>
+                <port>hdmi</port>
+                <port>com</port>
+            </ports>
+            <energy>790</energy>
+            <group>power_supply</group>
+        </type>
+    </device>
+    <device critical="true" id="10">
+        <name>samsing pl100</name>
+        <origin>de</origin>
+        <price>523</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>microphone</deviceType>
+            <ports>
+                <port>ethernet</port>
+                <port>com</port>
+                <port>jack</port>
+            </ports>
+            <energy>550</energy>
+            <group>memory</group>
+        </type>
+    </device>
+    <device critical="false" id="11">
+        <name>genius q250</name>
+        <origin>us</origin>
+        <price>227</price>
+        <type cooler="false" peripheral="false">
+            <deviceType>mouse</deviceType>
+            <ports>
+                <port>jack</port>
+                <port>ethernet</port>
+                <port>pci</port>
+                <port>com</port>
+            </ports>
+            <energy>280</energy>
+            <group>memory</group>
+        </type>
+    </device>
+    <device critical="false" id="12">
+        <name>a4tech a100</name>
+        <origin>ru</origin>
+        <price>690</price>
+        <type cooler="true" peripheral="true">
+            <deviceType>printer</deviceType>
+            <ports>
+                <port>pci</port>
+                <port>usb</port>
+            </ports>
+            <energy>680</energy>
+            <group>memory</group>
+        </type>
+    </device>
+    <device critical="false" id="13">
+        <name>xiaomi mi7</name>
+        <origin>fr</origin>
+        <price>484</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>mouse</deviceType>
+            <ports>
+                <port>com</port>
+                <port>ethernet</port>
+                <port>pci</port>
+                <port>usb</port>
+            </ports>
+            <energy>370</energy>
+            <group>multimedia</group>
+        </type>
+    </device>
+    <device critical="true" id="14">
+        <name>samsing pl100</name>
+        <origin>ru</origin>
+        <price>293</price>
+        <type cooler="false" peripheral="false">
+            <deviceType>mouse</deviceType>
+            <ports>
+                <port>usb</port>
+                <port>jack</port>
+            </ports>
+            <energy>470</energy>
+            <group>power_supply</group>
+        </type>
+    </device>
+    <device critical="false" id="15">
+        <name>bloody q7</name>
+        <origin>ru</origin>
+        <price>558</price>
+        <type cooler="true" peripheral="true">
+            <deviceType>mouse</deviceType>
+            <ports>
+                <port>hdmi</port>
+                <port>jack</port>
+            </ports>
+            <energy>350</energy>
+            <group>io_device</group>
+        </type>
+    </device>
+    <device critical="true" id="16">
+        <name>xiaomi mi7</name>
+        <origin>ru</origin>
+        <price>796</price>
+        <type cooler="true" peripheral="false">
+            <deviceType>keyboard</deviceType>
+            <ports>
+                <port>pci</port>
+                <port>com</port>
+            </ports>
+            <energy>350</energy>
+            <group>power_supply</group>
+        </type>
+    </device>
+    <device critical="false" id="17">
+        <name>bloody q7</name>
+        <origin>us</origin>
+        <price>46</price>
+        <type cooler="false" peripheral="true">
+            <deviceType>mouse</deviceType>
+            <ports>
+                <port>usb</port>
+            </ports>
+            <energy>20</energy>
+            <group>multimedia</group>
+        </type>
+    </device>
+</devices>
